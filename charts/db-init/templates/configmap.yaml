@@ -1,0 +1,51 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "db-init.fullname" . }}
+  labels:
+    {{- include "db-init.labels" . | nindent 4 }}
+data:
+  init.sh: |
+    #!/bin/sh
+    set -e
+
+    echo "Starting database initialization..."
+    echo "Database: $DATABASE_URL"
+
+    # Insert model
+    psql "$DATABASE_URL" <<-EOSQL
+    -- Insert the endpoint if it doesn't exist
+    INSERT INTO inference_endpoints (name, description, url, created_by)
+    VALUES (
+      '{{ .Values.endpoint.name }}',
+      '{{ .Values.endpoint.description }}',
+      '{{ .Values.endpoint.url }}',
+      '00000000-0000-0000-0000-000000000000'::uuid
+    ) ON CONFLICT (name) DO NOTHING;
+
+    -- Insert the model if it doesn't exist
+    INSERT INTO deployed_models (
+        model_name, alias, description, created_by, hosted_on
+    )
+    SELECT
+        '{{ .Values.model.name }}',
+        '{{ .Values.model.name }}',
+        'Load Test Model',
+        '00000000-0000-0000-0000-000000000000'::uuid,
+        id
+    FROM inference_endpoints
+    WHERE name='{{ .Values.endpoint.name }}'
+    ON CONFLICT DO NOTHING;
+
+    -- Insert association between model and endpoint
+    INSERT INTO deployment_groups (deployment_id, group_id, granted_by)
+    SELECT
+        dm.id,
+        '00000000-0000-0000-0000-000000000000'::uuid,
+        '00000000-0000-0000-0000-000000000000'::uuid
+    FROM deployed_models dm
+    WHERE dm.model_name='{{ .Values.model.name }}'
+    ON CONFLICT DO NOTHING;
+    EOSQL
+
+    echo "Database initialization complete!"

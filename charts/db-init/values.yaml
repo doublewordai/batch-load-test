@@ -1,0 +1,27 @@
+image:
+  repository: postgres
+  tag: "16-alpine"
+  pullPolicy: IfNotPresent
+
+secret:
+  name: control-layer-secret
+  key: DATABASE_URL
+
+model:
+  name: "load-test"
+
+endpoint:
+  name: "load-test-endpoint"
+  description: "Load Test Inference Endpoint"
+  url: "http://openai-mock-mockai/v1"
+
+restartPolicy: OnFailure
+backoffLimit: 1
+
+resources:
+  limits:
+    cpu: 100m
+    memory: 128Mi
+  requests:
+    cpu: 50m
+    memory: 64Mi

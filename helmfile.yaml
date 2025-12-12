@@ -1,0 +1,33 @@
+releases:
+  - name: control-layer
+    namespace: {{ .Values.namespace }}
+    createNamespace: true
+    chart: oci://ghcr.io/doublewordai/charts/control-layer
+    version: 0.4.5
+    secrets:
+      - control-layer.enc.yaml
+    labels:
+      tier: app
+      component: control-layer
+      env: load-test
+
+  - name: db-init
+    namespace: {{ .Values.namespace }}
+    chart: ./charts/db-init
+    version: 0.1.0
+    needs:
+      - control-layer
+    labels:
+      tier: app
+      component: control-layer
+      env: load-test
+
+  - name: openai-mock
+    namespace: {{ .Values.namespace }}
+    createNamespace: true
+    chart: ./charts/mockai
+    version: 0.1.0
+    labels:
+      tier: app
+      component: inference-stack
+      env: load-test
