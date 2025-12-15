@@ -1,0 +1,10 @@
+{"custom_id": "req-1", "method": "POST", "url": "/v1/chat/completions", "body": {"model": "load-test", "messages": [{"role": "system", "content": "You are a helpful assistant."}, {"role": "user", "content": "What is quantum computing?"}], "max_tokens": 200}}
+{"custom_id": "req-2", "method": "POST", "url": "/v1/chat/completions", "body": {"model": "load-test", "messages": [{"role": "user", "content": "Explain machine learning in simple terms"}], "max_tokens": 250}}
+{"custom_id": "req-3", "method": "POST", "url": "/v1/chat/completions", "body": {"model": "load-test", "messages": [{"role": "user", "content": "Write a short story about a robot"}], "max_tokens": 300}}
+{"custom_id": "req-4", "method": "POST", "url": "/v1/chat/completions", "body": {"model": "load-test", "messages": [{"role": "user", "content": "Compare Python and JavaScript"}], "max_tokens": 200}}
+{"custom_id": "req-5", "method": "POST", "url": "/v1/chat/completions", "body": {"model": "load-test", "messages": [{"role": "user", "content": "What are the benefits of cloud computing?"}], "max_tokens": 250}}
+{"custom_id": "req-6", "method": "POST", "url": "/v1/chat/completions", "body": {"model": "load-test", "messages": [{"role": "user", "content": "Describe the water cycle"}], "max_tokens": 200}}
+{"custom_id": "req-7", "method": "POST", "url": "/v1/chat/completions", "body": {"model": "load-test", "messages": [{"role": "user", "content": "What is photosynthesis?"}], "max_tokens": 150}}
+{"custom_id": "req-8", "method": "POST", "url": "/v1/chat/completions", "body": {"model": "load-test", "messages": [{"role": "user", "content": "Explain blockchain technology"}], "max_tokens": 250}}
+{"custom_id": "req-9", "method": "POST", "url": "/v1/chat/completions", "body": {"model": "load-test", "messages": [{"role": "user", "content": "What is artificial intelligence?"}], "max_tokens": 200}}
+{"custom_id": "req-10", "method": "POST", "url": "/v1/chat/completions", "body": {"model": "load-test", "messages": [{"role": "user", "content": "Describe the solar system"}], "max_tokens": 250}}

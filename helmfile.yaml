@@ -31,3 +31,28 @@ releases:
       tier: app
       component: inference-stack
       env: load-test
+
+  - name: locust
+    namespace: {{ .Values.namespace }}
+    chart: ./charts/locust
+    installed: false
+    version: 0.1.0
+    needs:
+      - control-layer
+      - db-init
+      - openai-mock
+    values:
+      - locust-batch-test.yaml
+    set:
+      - name: locustfile.inline
+        file: locust/locustfile.py
+      - name: testData.files.batch_input_small\.jsonl
+        file: locust/test_data/batch_input_small.jsonl
+      - name: testData.files.batch_input_medium\.jsonl
+        file: locust/test_data/batch_input_medium.jsonl
+      - name: testData.files.batch_input_large\.jsonl
+        file: locust/test_data/batch_input_large.jsonl
+    labels:
+      tier: test
+      component: load-test
+      env: load-test

@@ -1,0 +1,80 @@
+{{- if eq .Values.mode "job" }}
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ include "locust.fullname" . }}
+  labels:
+    {{- include "locust.labels" . | nindent 4 }}
+spec:
+  backoffLimit: {{ .Values.job.backoffLimit }}
+  {{- with .Values.job.ttlSecondsAfterFinished }}
+  ttlSecondsAfterFinished: {{ . }}
+  {{- end }}
+  template:
+    metadata:
+      labels:
+        {{- include "locust.selectorLabels" . | nindent 8 }}
+    spec:
+      restartPolicy: {{ .Values.job.restartPolicy }}
+      containers:
+      - name: locust
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        args:
+          {{- include "locust.args" . | nindent 10 }}
+        env:
+        - name: LOCUST_LOCUSTFILE
+          value: /locust/locustfile.py
+        - name: TEST_DATA_FILE
+          value: /test_data/{{ .Values.testData.selectedFile }}
+        - name: API_KEY_ENDPOINT
+          value: {{ .Values.apiKeyEndpoint | default "/admin/api/v1/users/current/api-keys" | quote }}
+        - name: BASIC_AUTH_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: {{ include "locust.secretName" . }}
+              key: {{ .Values.auth.existingSecretUsernameKey }}
+        - name: BASIC_AUTH_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: {{ include "locust.secretName" . }}
+              key: {{ .Values.auth.existingSecretPasswordKey }}
+        - name: P95_THRESHOLD_MS
+          value: {{ .Values.assertions.p95ThresholdMs | quote }}
+        - name: ERROR_RATE_THRESHOLD
+          value: {{ .Values.assertions.errorRateThreshold | quote }}
+        volumeMounts:
+        - name: locustfile
+          mountPath: /locust
+        {{- if or .Values.testData.inline .Values.testData.file }}
+        - name: testdata
+          mountPath: /test_data
+        {{- end }}
+        - name: results
+          mountPath: /results
+        resources:
+          {{- toYaml .Values.resources | nindent 10 }}
+      volumes:
+      - name: locustfile
+        configMap:
+          name: {{ include "locust.fullname" . }}-locustfile
+      {{- if or .Values.testData.inline .Values.testData.file }}
+      - name: testdata
+        configMap:
+          name: {{ include "locust.fullname" . }}-testdata
+      {{- end }}
+      - name: results
+        emptyDir: {}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+{{- end }}

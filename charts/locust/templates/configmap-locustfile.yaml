@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "locust.fullname" . }}-locustfile
+  labels:
+    {{- include "locust.labels" . | nindent 4 }}
+data:
+  locustfile.py: |
+    {{- if .Values.locustfile.inline }}
+    {{- .Values.locustfile.inline | nindent 4 }}
+    {{- else if .Values.locustfile.file }}
+    {{- $.Files.Get (printf "files/%s" .Values.locustfile.file) | nindent 4 }}
+    {{- else }}
+    {{- $.Files.Get "files/locustfile.py" | nindent 4 }}
+    {{- end }}

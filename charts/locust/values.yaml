@@ -1,0 +1,122 @@
+## Mode: "job" for one-time test runs, "deployment" for persistent web UI
+mode: job
+
+image:
+  repository: locust/locust
+  pullPolicy: IfNotPresent
+  tag: "2.20.0"
+
+## API Key endpoint for authentication
+# The endpoint used to create API keys using Basic Auth
+# One shared API key is created at test start and used by all simulated users
+apiKeyEndpoint: "/admin/api/v1/users/current/api-keys"
+
+## Load test configuration
+loadTest:
+  # Target host (required - must be set at deployment time)
+  host: ""
+
+  # User configuration
+  users: 10
+  spawnRate: 5
+  runTime: "2m"
+
+  # Test profile (overrides users, spawnRate, runTime if set)
+  # Leave empty to use explicit users/spawnRate/runTime values
+  profile: ""  # Options: smoke, load, stress, soak
+
+## Authentication
+auth:
+  # Reference to existing secret (recommended)
+  existingSecret: ""
+  existingSecretUsernameKey: "username"
+  existingSecretPasswordKey: "password"
+
+  # Or create new secret
+  # Only used if existingSecret is empty
+  username: ""
+  password: ""
+
+## Test data configuration
+testData:
+  # Provide inline data (YAML multiline string) - for single file compatibility
+  inline: ""
+  # Or reference a file from chart files/ directory
+  # (must be present in charts/locust/files/)
+  file: ""
+  # Or provide multiple files as a map (recommended for helmfile injection)
+  # Key is the filename, value is the content
+  files: {}
+    # batch_input_small.jsonl: |
+    #   {"custom_id": "req-1", ...}
+    # batch_input_medium.jsonl: |
+    #   {"custom_id": "req-1", ...}
+  # Which file to use (when multiple files are provided)
+  # Set this to select which test data file your locustfile should use
+  selectedFile: "batch_input_medium.jsonl"
+
+## Locustfile configuration
+locustfile:
+  # Provide inline locustfile content (YAML multiline string)
+  inline: ""
+  # Or reference a file from chart files/ directory
+  # If both inline and file are empty, uses the default generic locustfile.py
+  file: ""
+
+## Service configuration (only used in deployment mode)
+service:
+  type: ClusterIP
+  port: 8089
+
+## Job specific configuration (only used in job mode)
+job:
+  restartPolicy: Never
+  backoffLimit: 0
+  ttlSecondsAfterFinished: 3600  # Cleanup after 1 hour
+
+## Deployment specific configuration (only used in deployment mode)
+deployment:
+  replicas: 1
+
+## Resource limits
+resources:
+  limits:
+    cpu: 2000m
+    memory: 2Gi
+  requests:
+    cpu: 500m
+    memory: 512Mi
+
+## Performance assertion thresholds
+assertions:
+  p95ThresholdMs: 1000
+  errorRateThreshold: 0.01
+
+## Test profiles
+profiles:
+  smoke:
+    users: 10
+    spawnRate: 5
+    runTime: "2m"
+
+  load:
+    users: 100
+    spawnRate: 10
+    runTime: "5m"
+
+  stress:
+    users: 500
+    spawnRate: 50
+    runTime: "10m"
+
+  soak:
+    users: 100
+    spawnRate: 10
+    runTime: "30m"
+
+## Node selection
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}

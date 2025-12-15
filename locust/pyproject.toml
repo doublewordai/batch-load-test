@@ -1,0 +1,24 @@
+[project]
+name = "locust-batch-test"
+version = "0.1.0"
+description = "Load test for batch inference service"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "locust==2.42"
+]
+
+[project.scripts]
+load-test = "load_test:main"
+
+[tool.uv]
+# Enable package mode to install entry points (scripts)
+package = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["."]
+only-include = ["load_test.py", "locustfile.py"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

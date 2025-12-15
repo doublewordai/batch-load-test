@@ -1,0 +1,21 @@
+## Batch API Load Test Configuration
+## Locustfile and test data are injected via helmfile's set: directive
+
+mode: job
+
+loadTest:
+  host: "http://control-layer:3001"
+  profile: load
+
+auth:
+  existingSecret: control-layer-secret
+  existingSecretUsernameKey: BASIC_AUTH_USERNAME
+  existingSecretPasswordKey: BASIC_AUTH_PASSWORD
+
+testData:
+  # Select which test data file to use (all three are mounted)
+  # Options: batch_input_small.jsonl, batch_input_medium.jsonl, batch_input_large.jsonl
+  selectedFile: "batch_input_medium.jsonl"
+
+# locustfile.inline and testData.files.* are set via helmfile
+# using file injection from locust/locustfile.py and locust/test_data/*.jsonl

@@ -1,0 +1,52 @@
+{"custom_id": "req-1", "method": "POST", "url": "/v1/chat/completions", "body": {"model": "load-test", "messages": [{"role": "user", "content": "Explain the theory of relativity"}], "max_tokens": 400}}
+{"custom_id": "req-2", "method": "POST", "url": "/v1/chat/completions", "body": {"model": "load-test", "messages": [{"role": "user", "content": "What is the history of the internet?"}], "max_tokens": 500}}
+{"custom_id": "req-3", "method": "POST", "url": "/v1/chat/completions", "body": {"model": "load-test", "messages": [{"role": "user", "content": "Describe DNA and genetics"}], "max_tokens": 400}}
+{"custom_id": "req-4", "method": "POST", "url": "/v1/chat/completions", "body": {"model": "load-test", "messages": [{"role": "user", "content": "What is climate change?"}], "max_tokens": 450}}
+{"custom_id": "req-5", "method": "POST", "url": "/v1/chat/completions", "body": {"model": "load-test", "messages": [{"role": "user", "content": "Explain neural networks"}], "max_tokens": 500}}
+{"custom_id": "req-6", "method": "POST", "url": "/v1/chat/completions", "body": {"model": "load-test", "messages": [{"role": "user", "content": "What is sustainable energy?"}], "max_tokens": 400}}
+{"custom_id": "req-7", "method": "POST", "url": "/v1/chat/completions", "body": {"model": "load-test", "messages": [{"role": "user", "content": "Describe the human immune system"}], "max_tokens": 450}}
+{"custom_id": "req-8", "method": "POST", "url": "/v1/chat/completions", "body": {"model": "load-test", "messages": [{"role": "user", "content": "What is cryptocurrency?"}], "max_tokens": 400}}
+{"custom_id": "req-9", "method": "POST", "url": "/v1/chat/completions", "body": {"model": "load-test", "messages": [{"role": "user", "content": "Explain evolution by natural selection"}], "max_tokens": 500}}
+{"custom_id": "req-10", "method": "POST", "url": "/v1/chat/completions", "body": {"model": "load-test", "messages": [{"role": "user", "content": "What is the structure of an atom?"}], "max_tokens": 400}}
+{"custom_id": "req-11", "method": "POST", "url": "/v1/chat/completions", "body": {"model": "load-test", "messages": [{"role": "user", "content": "Describe the layers of Earth's atmosphere"}], "max_tokens": 450}}
+{"custom_id": "req-12", "method": "POST", "url": "/v1/chat/completions", "body": {"model": "load-test", "messages": [{"role": "user", "content": "What is quantum mechanics?"}], "max_tokens": 500}}
+{"custom_id": "req-13", "method": "POST", "url": "/v1/chat/completions", "body": {"model": "load-test", "messages": [{"role": "user", "content": "Explain the Big Bang theory"}], "max_tokens": 450}}
+{"custom_id": "req-14", "method": "POST", "url": "/v1/chat/completions", "body": {"model": "load-test", "messages": [{"role": "user", "content": "What is the carbon cycle?"}], "max_tokens": 400}}
+{"custom_id": "req-15", "method": "POST", "url": "/v1/chat/completions", "body": {"model": "load-test", "messages": [{"role": "user", "content": "Describe cellular respiration"}], "max_tokens": 450}}
+{"custom_id": "req-16", "method": "POST", "url": "/v1/chat/completions", "body": {"model": "load-test", "messages": [{"role": "user", "content": "What is renewable energy?"}], "max_tokens": 400}}
+{"custom_id": "req-17", "method": "POST", "url": "/v1/chat/completions", "body": {"model": "load-test", "messages": [{"role": "user", "content": "Explain the nitrogen cycle"}], "max_tokens": 400}}
+{"custom_id": "req-18", "method": "POST", "url": "/v1/chat/completions", "body": {"model": "load-test", "messages": [{"role": "user", "content": "What is plate tectonics?"}], "max_tokens": 450}}
+{"custom_id": "req-19", "method": "POST", "url": "/v1/chat/completions", "body": {"model": "load-test", "messages": [{"role": "user", "content": "Describe the human brain"}], "max_tokens": 500}}
+{"custom_id": "req-20", "method": "POST", "url": "/v1/chat/completions", "body": {"model": "load-test", "messages": [{"role": "user", "content": "What is the periodic table?"}], "max_tokens": 450}}
+{"custom_id": "req-21", "method": "POST", "url": "/v1/chat/completions", "body": {"model": "load-test", "messages": [{"role": "user", "content": "Explain gene expression"}], "max_tokens": 400}}
+{"custom_id": "req-22", "method": "POST", "url": "/v1/chat/completions", "body": {"model": "load-test", "messages": [{"role": "user", "content": "What is the electromagnetic spectrum?"}], "max_tokens": 450}}
+{"custom_id": "req-23", "method": "POST", "url": "/v1/chat/completions", "body": {"model": "load-test", "messages": [{"role": "user", "content": "Describe ocean currents"}], "max_tokens": 400}}
+{"custom_id": "req-24", "method": "POST", "url": "/v1/chat/completions", "body": {"model": "load-test", "messages": [{"role": "user", "content": "What is biod
+
+iversity?"}], "max_tokens": 450}}
+{"custom_id": "req-25", "method": "POST", "url": "/v1/chat/completions", "body": {"model": "load-test", "messages": [{"role": "user", "content": "Explain gravitational waves"}], "max_tokens": 500}}
+{"custom_id": "req-26", "method": "POST", "url": "/v1/chat/completions", "body": {"model": "load-test", "messages": [{"role": "user", "content": "What is the water table?"}], "max_tokens": 400}}
+{"custom_id": "req-27", "method": "POST", "url": "/v1/chat/completions", "body": {"model": "load-test", "messages": [{"role": "user", "content": "Describe protein synthesis"}], "max_tokens": 450}}
+{"custom_id": "req-28", "method": "POST", "url": "/v1/chat/completions", "body": {"model": "load-test", "messages": [{"role": "user", "content": "What is chemical bonding?"}], "max_tokens": 400}}
+{"custom_id": "req-29", "method": "POST", "url": "/v1/chat/completions", "body": {"model": "load-test", "messages": [{"role": "user", "content": "Explain the greenhouse effect"}], "max_tokens": 450}}
+{"custom_id": "req-30", "method": "POST", "url": "/v1/chat/completions", "body": {"model": "load-test", "messages": [{"role": "user", "content": "What is nuclear fusion?"}], "max_tokens": 500}}
+{"custom_id": "req-31", "method": "POST", "url": "/v1/chat/completions", "body": {"model": "load-test", "messages": [{"role": "user", "content": "Describe the ecosystem"}], "max_tokens": 450}}
+{"custom_id": "req-32", "method": "POST", "url": "/v1/chat/completions", "body": {"model": "load-test", "messages": [{"role": "user", "content": "What is thermodynamics?"}], "max_tokens": 400}}
+{"custom_id": "req-33", "method": "POST", "url": "/v1/chat/completions", "body": {"model": "load-test", "messages": [{"role": "user", "content": "Explain the water cycle"}], "max_tokens": 400}}
+{"custom_id": "req-34", "method": "POST", "url": "/v1/chat/completions", "body": {"model": "load-test", "messages": [{"role": "user", "content": "What is the Higgs boson?"}], "max_tokens": 500}}
+{"custom_id": "req-35", "method": "POST", "url": "/v1/chat/completions", "body": {"model": "load-test", "messages": [{"role": "user", "content": "Describe antibiotic resistance"}], "max_tokens": 450}}
+{"custom_id": "req-36", "method": "POST", "url": "/v1/chat/completions", "body": {"model": "load-test", "messages": [{"role": "user", "content": "What is dark matter?"}], "max_tokens": 500}}
+{"custom_id": "req-37", "method": "POST", "url": "/v1/chat/completions", "body": {"model": "load-test", "messages": [{"role": "user", "content": "Explain the rock cycle"}], "max_tokens": 400}}
+{"custom_id": "req-38", "method": "POST", "url": "/v1/chat/completions", "body": {"model": "load-test", "messages": [{"role": "user", "content": "What is aerodynamics?"}], "max_tokens": 450}}
+{"custom_id": "req-39", "method": "POST", "url": "/v1/chat/completions", "body": {"model": "load-test", "messages": [{"role": "user", "content": "Describe the cell cycle"}], "max_tokens": 400}}
+{"custom_id": "req-40", "method": "POST", "url": "/v1/chat/completions", "body": {"model": "load-test", "messages": [{"role": "user", "content": "What is the Doppler effect?"}], "max_tokens": 400}}
+{"custom_id": "req-41", "method": "POST", "url": "/v1/chat/completions", "body": {"model": "load-test", "messages": [{"role": "user", "content": "Explain symbiosis"}], "max_tokens": 400}}
+{"custom_id": "req-42", "method": "POST", "url": "/v1/chat/completions", "body": {"model": "load-test", "messages": [{"role": "user", "content": "What is superconductivity?"}], "max_tokens": 450}}
+{"custom_id": "req-43", "method": "POST", "url": "/v1/chat/completions", "body": {"model": "load-test", "messages": [{"role": "user", "content": "Describe the nitrogen fixation"}], "max_tokens": 400}}
+{"custom_id": "req-44", "method": "POST", "url": "/v1/chat/completions", "body": {"model": "load-test", "messages": [{"role": "user", "content": "What is entropy?"}], "max_tokens": 450}}
+{"custom_id": "req-45", "method": "POST", "url": "/v1/chat/completions", "body": {"model": "load-test", "messages": [{"role": "user", "content": "Explain osmosis"}], "max_tokens": 400}}
+{"custom_id": "req-46", "method": "POST", "url": "/v1/chat/completions", "body": {"model": "load-test", "messages": [{"role": "user", "content": "What is the aurora borealis?"}], "max_tokens": 450}}
+{"custom_id": "req-47", "method": "POST", "url": "/v1/chat/completions", "body": {"model": "load-test", "messages": [{"role": "user", "content": "Describe the digestive system"}], "max_tokens": 500}}
+{"custom_id": "req-48", "method": "POST", "url": "/v1/chat/completions", "body": {"model": "load-test", "messages": [{"role": "user", "content": "What is magnetism?"}], "max_tokens": 400}}
+{"custom_id": "req-49", "method": "POST", "url": "/v1/chat/completions", "body": {"model": "load-test", "messages": [{"role": "user", "content": "Explain the circulatory system"}], "max_tokens": 450}}
+{"custom_id": "req-50", "method": "POST", "url": "/v1/chat/completions", "body": {"model": "load-test", "messages": [{"role": "user", "content": "What is nanotechnology?"}], "max_tokens": 500}}

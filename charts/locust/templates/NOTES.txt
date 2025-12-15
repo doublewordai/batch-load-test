@@ -1,0 +1,44 @@
+Thank you for installing {{ .Chart.Name }}!
+
+Your release is named {{ .Release.Name }}.
+
+{{- if eq .Values.mode "job" }}
+
+A Locust load test Job has been created.
+
+To check the status of the job:
+  kubectl get job {{ include "locust.fullname" . }} -n {{ .Release.Namespace }}
+
+To view the logs:
+  kubectl logs job/{{ include "locust.fullname" . }} -n {{ .Release.Namespace }}
+
+To collect results:
+  POD=$(kubectl get pod -l app.kubernetes.io/name={{ include "locust.name" . }} -o jsonpath='{.items[0].metadata.name}' -n {{ .Release.Namespace }})
+  kubectl cp {{ .Release.Namespace }}/${POD}:/results ./results/
+
+{{- else if eq .Values.mode "deployment" }}
+
+A Locust deployment with web UI has been created.
+
+To access the Locust web UI:
+{{- if eq .Values.service.type "LoadBalancer" }}
+  export SERVICE_IP=$(kubectl get svc {{ include "locust.fullname" . }} -n {{ .Release.Namespace }} -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
+  echo "http://${SERVICE_IP}:{{ .Values.service.port }}"
+{{- else }}
+  kubectl port-forward svc/{{ include "locust.fullname" . }} {{ .Values.service.port }}:{{ .Values.service.port }} -n {{ .Release.Namespace }}
+  echo "Access at http://localhost:{{ .Values.service.port }}"
+{{- end }}
+
+{{- end }}
+
+Test Configuration:
+  Host: {{ .Values.loadTest.host }}
+{{- $settings := include "locust.profileSettings" . | fromYaml }}
+  Users: {{ $settings.users }}
+  Spawn Rate: {{ $settings.spawnRate }}
+  Run Time: {{ $settings.runTime }}
+  Profile: {{ .Values.loadTest.profile }}
+
+Performance Assertions:
+  P95 Threshold: {{ .Values.assertions.p95ThresholdMs }}ms
+  Error Rate Threshold: {{ .Values.assertions.errorRateThreshold | mul 100 }}%

@@ -1,0 +1,22 @@
+{{- if or .Values.testData.inline .Values.testData.file .Values.testData.files }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "locust.fullname" . }}-testdata
+  labels:
+    {{- include "locust.labels" . | nindent 4 }}
+data:
+  {{- if .Values.testData.files }}
+  {{- range $filename, $content := .Values.testData.files }}
+  {{ $filename }}: |
+    {{- $content | nindent 4 }}
+  {{- end }}
+  {{- else }}
+  batch_input.jsonl: |
+    {{- if .Values.testData.inline }}
+    {{- .Values.testData.inline | nindent 4 }}
+    {{- else if .Values.testData.file }}
+    {{- $.Files.Get (printf "files/%s" .Values.testData.file) | nindent 4 }}
+    {{- end }}
+  {{- end }}
+{{- end }}
